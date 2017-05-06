@@ -1,6 +1,9 @@
 services:
   graphql_twig.twig_extension:
     class: \dawehner\GraphqlTwig\GraphqlTwigExtension
-    arguments: ['@graphql.processor']
+    arguments: ['@graphql_twig.processor']
     tags:
       - { name: twig.extension }
+  graphql_twig.processor:
+    class: \Drupal\graphql\GraphQL\Execution\Processor
+    arguments: ['@service_container', '@graphql.schema']
